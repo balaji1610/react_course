@@ -5,11 +5,22 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import { useState } from "react";
-import foodOrderDetails from "@/app/utilities/FoodOrderDetails";
 import Tooltip from "@mui/material/Tooltip";
+import Model from "@/app/FoodOrder/Components/Model";
+import Additem from "@/app/FoodOrder/Container/AddItem";
+import { useApplicationContext } from "@/app/Context/FoodOrderContext";
+import { MenuListType } from "@/app/Interface/FoodOrderType";
 export default function MenuItem() {
-  const [menuItems, setMenuItems] = useState(foodOrderDetails);
+  const { open, setOpen, menuItems, setMenuItems, setSelectMenuList } =
+    useApplicationContext();
+
+  const addItem = (menu: MenuListType) => {
+    setOpen(true);
+    setSelectMenuList(menu);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const MenutItemstyles = {
     dishNameStyle: {
       display: "grid",
@@ -30,7 +41,6 @@ export default function MenuItem() {
       categoryColor: "",
       categoryAbbreviation: "",
     };
-
     switch (category) {
       case "NON-VEG":
         categoryType.categoryColor = "#ff5722";
@@ -49,7 +59,6 @@ export default function MenuItem() {
         categoryType.categoryAbbreviation = "S";
         break;
     }
-
     return categoryType;
   };
 
@@ -83,16 +92,16 @@ export default function MenuItem() {
                     <Tooltip title={category}>
                       <Avatar
                         sx={{
-                          bgcolor: categoryImage(category).categoryColor,
+                          bgcolor: categoryImage(category as string)
+                            .categoryColor,
                           cursor: "pointer",
                         }}
                       >
-                        {categoryImage(category).categoryAbbreviation}
+                        {categoryImage(category as string).categoryAbbreviation}
                       </Avatar>
                     </Tooltip>
                   </div>
                 </div>
-
                 <Typography
                   variant="subtitle2"
                   color="text.secondary"
@@ -104,13 +113,23 @@ export default function MenuItem() {
                   &#x20b9;{price}{" "}
                 </Typography>
                 <div style={MenutItemstyles.add}>
-                  <Button variant="contained">Add</Button>
+                  <Button variant="contained" onClick={() => addItem(item)}>
+                    Add
+                  </Button>
                 </div>
               </CardContent>
             </Card>
           </div>
         );
       })}
+      <div>
+        <Model
+          open={open}
+          handleClose={handleClose}
+          title="Add Items"
+          component={<Additem />}
+        />
+      </div>
     </div>
   );
 }
