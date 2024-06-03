@@ -1,10 +1,13 @@
 import { useApplicationContext } from "@/app/Context/FoodOrderContext";
 import Button from "@mui/material/Button";
+import { MenuListType } from "@/app/Interface/FoodOrderType";
 import { useEffect, useState } from "react";
 export default function Additem() {
   const { selectMenuList, setOpen, setMenuItems } = useApplicationContext();
 
-  const [updatedCart, setUpdateCart] = useState<any>(selectMenuList);
+  const [updatedCart, setUpdateCart] = useState<MenuListType | null>(
+    selectMenuList
+  );
 
   useEffect(() => {
     updatedCart;
@@ -14,9 +17,9 @@ export default function Additem() {
     setOpen(false);
   };
   const addCartClick = () => {
-    setMenuItems((prev) => {
-      const updated = prev.map((el) => {
-        return el.id === updatedCart?.id ? updatedCart : el;
+    setMenuItems((prev: any) => {
+      const updated = prev?.map((el: any) => {
+        return el?.id === updatedCart?.id ? updatedCart : el;
       });
       return updated;
     });

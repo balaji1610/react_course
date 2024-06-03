@@ -7,7 +7,7 @@ import Counter from "@/app/Counter/Counter";
 import Flashcards from "@/app/FlashCards/Flashcards";
 import AccordionHome from "./Accordion/AccordionHome";
 export default function Dropdown() {
-  const [value, setvalue] = useState("AccordionHome");
+  const [value, setvalue] = useState("Flashcards");
   const InutTopicsOptions = [
     {
       label: "FoodOrderHomePage",

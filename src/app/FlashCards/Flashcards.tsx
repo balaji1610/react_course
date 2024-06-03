@@ -42,13 +42,13 @@ export default function Flashcards() {
   const [questionLists, setQuestionLists] = useState<FlashcardType[]>([]);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name == "question") {
-      if (e.target.value.length <= 45 && e.target.value.length >= 1) {
+      if (e.target.value.length <= 45) {
         setQuestionList((prev) => {
           return { ...prev, [e.target.name]: e.target.value };
         });
       }
     } else if (e.target.name == "answer") {
-      if (e.target.value.length <= 180 && e.target.value.length >= 1) {
+      if (e.target.value.length <= 180) {
         setQuestionList((prev) => {
           return { ...prev, [e.target.name]: e.target.value };
         });
@@ -57,14 +57,16 @@ export default function Flashcards() {
   };
 
   const prepareQuestionsList = () => {
-    const updatedId = {
-      ...questionsList,
-      id: Number(questionLists.length + 1),
-    };
-    setQuestionLists((prev) => {
-      return [...prev, updatedId];
-    });
-    setQuestionList(List);
+    if (questionsList.question.length && questionsList.answer.length) {
+      const updatedId = {
+        ...questionsList,
+        id: Number(questionLists.length + 1),
+      };
+      setQuestionLists((prev) => {
+        return [...prev, updatedId];
+      });
+      setQuestionList(List);
+    }
   };
   return (
     <div>
@@ -102,7 +104,13 @@ export default function Flashcards() {
         </div>
         <div style={flashcardsStyle.answerLayout}>
           {" "}
-          <Button variant="contained" onClick={prepareQuestionsList}>
+          <Button
+            variant="contained"
+            onClick={prepareQuestionsList}
+            disabled={
+              !(questionsList.question.length && questionsList.answer.length)
+            }
+          >
             ADD
           </Button>
         </div>
