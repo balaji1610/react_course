@@ -6,8 +6,9 @@ import NavigationPage from "@/app/Navigation/NavigationPage";
 import Counter from "@/app/Counter/Counter";
 import Flashcards from "@/app/FlashCards/Flashcards";
 import AccordionHome from "./Accordion/AccordionHome";
+import TravelList from "@/app/TravelList/TravelList";
 export default function Dropdown() {
-  const [value, setvalue] = useState("Flashcards");
+  const [value, setvalue] = useState("TravelList");
   const InutTopicsOptions = [
     {
       label: "FoodOrderHomePage",
@@ -31,6 +32,10 @@ export default function Dropdown() {
       label: "Counter",
       value: "Counter",
     },
+    {
+      label: "TravelList",
+      value: "TravelList",
+    },
   ];
   const handleChange = (event: any) => {
     setvalue(event.target.value);
@@ -41,6 +46,7 @@ export default function Dropdown() {
     Counter: <Counter />,
     Flashcards: <Flashcards />,
     AccordionHome: <AccordionHome />,
+    TravelList: <TravelList />,
   };
   return (
     <div>
