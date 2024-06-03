@@ -1,11 +1,13 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import FoodOrderHomePage from "@/app/FoodOrder/FoodOrderHomePage";
 import { ApplicationProvider } from "@/app/Context/FoodOrderContext";
+import FoodOrderHomePage from "@/app/FoodOrder/FoodOrderHomePage";
 import NavigationPage from "@/app/Navigation/NavigationPage";
-import Counter from "@/app/Counter/Counter"
-import Flashcards from "@/app/FlashCards/Flashcards"
+import Counter from "@/app/Counter/Counter";
+import Flashcards from "@/app/FlashCards/Flashcards";
+import AccordionHome from "./Accordion/AccordionHome";
+import Dropdown from "./Dropdown";
 export default function Home() {
   return (
     <div>
@@ -13,7 +15,9 @@ export default function Home() {
         {/* <FoodOrderHomePage /> */}
         {/* <NavigationPage /> */}
         {/* <Counter/> */}
-        <Flashcards/>
+        {/* <Flashcards /> */}
+        {/* <AccordionHome /> */}
+        <Dropdown />
       </ApplicationProvider>
     </div>
   );
