@@ -7,8 +7,10 @@ import Counter from "@/app/Counter/Counter";
 import Flashcards from "@/app/FlashCards/Flashcards";
 import AccordionHome from "./Accordion/AccordionHome";
 import TravelList from "@/app/TravelList/TravelList";
+import TextExpander from "@/app/TextExpander/TextExpander";
+import SplitBill from "@/app/SplitBill/SpiltBill";
 export default function Dropdown() {
-  const [value, setvalue] = useState("TravelList");
+  const [value, setvalue] = useState("Profile");
   const InutTopicsOptions = [
     {
       label: "FoodOrderHomePage",
@@ -36,6 +38,14 @@ export default function Dropdown() {
       label: "TravelList",
       value: "TravelList",
     },
+    {
+      label: "TextExpander",
+      value: "TextExpander",
+    },
+    {
+      label: "Profile",
+      value: "Profile",
+    },
   ];
   const handleChange = (event: any) => {
     setvalue(event.target.value);
@@ -47,6 +57,8 @@ export default function Dropdown() {
     Flashcards: <Flashcards />,
     AccordionHome: <AccordionHome />,
     TravelList: <TravelList />,
+    TextExpander: <TextExpander />,
+    Profile: <SplitBill />,
   };
   return (
     <div>

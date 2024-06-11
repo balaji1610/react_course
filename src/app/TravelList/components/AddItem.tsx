@@ -33,7 +33,7 @@ export default function AddItem() {
     },
   };
 
-  const options = Array.from({ length: 20 }, (_, i) => i + 1);
+  const options = Array.from({ length: 10 }, (_, i) => i + 1);
   return (
     <>
       <div style={addItemStyle.addItem}>
@@ -47,7 +47,7 @@ export default function AddItem() {
             onChange={handleOnchange}
             name="quantity"
           >
-            {Array.from({ length: 20 }, (_, i) => i + 1).map((el) => {
+            {options.map((el) => {
               return (
                 <MenuItem key={el} value={el}>
                   {el}

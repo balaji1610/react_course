@@ -1,4 +1,5 @@
 import { ApplicationProvider } from "@/app/Context/FoodOrderContext";
+import { SplitBillProvider } from "@/app/Context/SplitBillContext";
 import React from "react";
 interface RootProviderPropsType {
   children: React.ReactNode;
@@ -7,7 +8,9 @@ interface RootProviderPropsType {
 export default function RootProvider({ children }: RootProviderPropsType) {
   return (
     <>
-      <ApplicationProvider>{children}</ApplicationProvider>
+      <ApplicationProvider>
+        <SplitBillProvider> {children}</SplitBillProvider>
+      </ApplicationProvider>
     </>
   );
 }
