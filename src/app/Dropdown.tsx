@@ -9,8 +9,9 @@ import AccordionHome from "./Accordion/AccordionHome";
 import TravelList from "@/app/TravelList/TravelList";
 import TextExpander from "@/app/TextExpander/TextExpander";
 import SplitBill from "@/app/SplitBill/SpiltBill";
+import CurrencyConvert from "@/app/CurrencyConverter/CurrencyConvert";
 export default function Dropdown() {
-  const [value, setvalue] = useState("Profile");
+  const [value, setvalue] = useState("CurrencyConvert");
   const InutTopicsOptions = [
     {
       label: "FoodOrderHomePage",
@@ -46,6 +47,10 @@ export default function Dropdown() {
       label: "Profile",
       value: "Profile",
     },
+    {
+      label: "CurrencyConvert",
+      value: "CurrencyConvert",
+    },
   ];
   const handleChange = (event: any) => {
     setvalue(event.target.value);
@@ -59,6 +64,7 @@ export default function Dropdown() {
     TravelList: <TravelList />,
     TextExpander: <TextExpander />,
     Profile: <SplitBill />,
+    CurrencyConvert: <CurrencyConvert />,
   };
   return (
     <div>
