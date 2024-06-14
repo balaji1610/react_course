@@ -10,8 +10,9 @@ import TravelList from "@/app/TravelList/TravelList";
 import TextExpander from "@/app/TextExpander/TextExpander";
 import SplitBill from "@/app/SplitBill/SpiltBill";
 import CurrencyConvert from "@/app/CurrencyConverter/CurrencyConvert";
+import QuizHome from "@/app/QuizApp/QuizHome";
 export default function Dropdown() {
-  const [value, setvalue] = useState("CurrencyConvert");
+  const [value, setvalue] = useState("QuizApp");
   const InutTopicsOptions = [
     {
       label: "FoodOrderHomePage",
@@ -51,6 +52,10 @@ export default function Dropdown() {
       label: "CurrencyConvert",
       value: "CurrencyConvert",
     },
+    {
+      label: "QuizApp",
+      value: "QuizApp",
+    },
   ];
   const handleChange = (event: any) => {
     setvalue(event.target.value);
@@ -65,6 +70,7 @@ export default function Dropdown() {
     TextExpander: <TextExpander />,
     Profile: <SplitBill />,
     CurrencyConvert: <CurrencyConvert />,
+    QuizApp: <QuizHome />,
   };
   return (
     <div>
